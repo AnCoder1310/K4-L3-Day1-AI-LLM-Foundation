@@ -15,11 +15,9 @@ Tài liệu này dắt bạn qua từng bước của buổi lab. Mỗi block k�
 Toàn bộ code viết trong `template.py`. Toàn bộ test chạy bằng mock —
 **không tốn tiền API khi chạy pytest**.
 
-> 💡 **Quy tắc quan trọng nhất của buổi lab:** import OpenAI **bên trong hàm**
-> (`from openai import OpenAI` nằm trong thân hàm, không nằm đầu file).
-> Lý do: các bài test thay thế (mock) `openai.OpenAI` — nếu bạn import ở đầu
-> file, hàm của bạn giữ tham chiếu đến class thật và test sẽ gọi API thật
-> → fail vì không có key.
+> 💡 **Quy tắc quan trọng nhất của buổi lab:** import Gemini **bên trong hàm**
+> (`from google import genai` nằm trong thân hàm, không nằm đầu file).
+> Cách này giúp các bài test thay thế client Gemini và không gọi API thật.
 
 ---
 
@@ -116,8 +114,7 @@ cấu hình API key hợp lệ.
 
 - `.env.example`: chỉ chứa placeholder và hướng dẫn cấu hình.
 - `.env`: chứa key thật trên máy của bạn; không được commit hoặc nộp bài.
-- `OPENAI_API_KEY`: khóa xác thực với nhà cung cấp API.
-- `OPENAI_BASE_URL`: endpoint thay thế khi dùng dịch vụ tương thích OpenAI.
+- `GEMINI_API_KEY`: khóa xác thực Google Gemini.
 - `LAB_MODEL`, `LAB_MINI_MODEL`: ghi đè tên model mặc định.
 
 Nếu chỉ chạy pytest, bạn không cần tạo `.env` vì test dùng mock.
@@ -128,7 +125,7 @@ Lệnh `python -m pip install -r requirements.txt` đọc file này và cài:
 
 | Thư viện | Vai trò |
 |---|---|
-| `openai` | Cung cấp client để gọi API. |
+| `google-genai` | Cung cấp client để gọi Gemini API. |
 | `tiktoken` | Mã hóa text và đếm token. |
 | `pytest` | Tìm và chạy các bài kiểm thử. |
 | `python-dotenv` | Đọc biến môi trường từ file `.env`. |
@@ -149,7 +146,7 @@ Thư mục này chứa test tương ứng với từng part:
 | `tests/__init__.py` | Đánh dấu `tests` là một Python package. |
 
 Khi chạy pytest, `_loader.py` ưu tiên nạp `solution/solution.py` nếu file đó
-tồn tại; nếu chưa có, nó nạp `template.py`. Các test thay client OpenAI thật
+tồn tại; nếu chưa có, nó nạp `template.py`. Các test thay client Gemini thật
 bằng mock, kiểm tra tham số hàm nhận được và dựng response/chunk giả. Vì vậy:
 
 - Test không gửi prompt ra Internet.

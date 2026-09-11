@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gemini Model Lab</title>
+    <link rel="stylesheet" href="frontend/style.css">
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <a class="brand" href="#top"><span>✦</span> <strong>Gemini</strong> Model Lab</a>
+        <span class="status">Giao diện tĩnh</span>
+      </header>
+
+      <section class="hero" id="top">
+        <p class="eyebrow">K4 · LLM FOUNDATION</p>
+        <h1>Hỏi một câu.<br><span>Nhận hai góc nhìn.</span></h1>
+        <p class="lead">Một giao diện đơn giản để đặt câu hỏi và so sánh câu trả lời từ hai model Gemini.</p>
+      </section>
+
+      <section class="question-layout" aria-label="Khu vực đặt câu hỏi">
+        <form class="question-box">
+          <div class="section-label">01 / CÂU HỎI</div>
+          <h2>Bạn muốn hỏi điều gì?</h2>
+          <label for="question">Nội dung câu hỏi</label>
+          <textarea id="question" rows="7" placeholder="Ví dụ: Giải thích machine learning cho một học sinh lớp 5..."></textarea>
+          <label for="api-key">Gemini API key</label>
+          <input id="api-key" type="password" placeholder="Dán API key để gửi câu hỏi">
+          <p class="key-note">Key chỉ dùng trong trình duyệt và không được lưu lại.</p>
+          <div class="question-footer">
+            <span>Gemini model comparison</span>
+            <button type="button">Gửi câu hỏi <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="suggestions">
+            <span>Gợi ý:</span>
+            <a href="#answers">Giải thích token bằng ví dụ đời thường</a>
+            <a href="#answers">Viết ý tưởng app AI cho sinh viên</a>
+          </div>
+        </form>
+
+        <aside class="note-box">
+          <div class="section-label">02 / SO SÁNH</div>
+          <h2>Hai câu trả lời, cùng một câu hỏi.</h2>
+          <p>So sánh chất lượng, tốc độ và chi phí của model chính với model nhẹ.</p>
+          <div class="legend"><span class="orange"></span> Gemini Flash <b>chất lượng</b></div>
+          <div class="legend"><span class="teal"></span> Gemini Flash Lite <b>tốc độ</b></div>
+        </aside>
+      </section>
+
+      <section class="answers" id="answers" aria-label="Câu trả lời">
+        <div class="answers-heading">
+          <div>
+            <div class="section-label">03 / HỎI ĐÁP</div>
+            <h2>Câu trả lời từ Gemini</h2>
+          </div>
+          <span class="answer-status" id="answer-status">Sẵn sàng nhận câu hỏi</span>
+        </div>
+
+        <div class="question-preview">
+          <span>Câu hỏi mẫu</span>
+          <p id="question-preview">Giải thích machine learning cho một học sinh lớp 5...</p>
+        </div>
+
+        <div class="answer-grid">
+          <article class="answer-card orange-card">
+            <header><div><h3>Gemini Flash</h3><code>gemini-2.5-flash</code></div><span class="model-dot"></span></header>
+            <p id="flash-answer">Machine learning là cách giúp máy tính học từ nhiều ví dụ để nhận ra quy luật và đưa ra dự đoán.</p>
+            <footer><span><b>Latency</b><span id="flash-latency">0.82s</span></span><span><b>Output</b>Live response</span></footer>
+          </article>
+
+          <article class="answer-card teal-card">
+            <header><div><h3>Gemini Flash Lite</h3><code>gemini-2.5-flash-lite</code></div><span class="model-dot"></span></header>
+            <p id="lite-answer">Machine learning giúp máy tính học qua ví dụ và nhận ra đặc điểm của dữ liệu mới.</p>
+            <footer><span><b>Latency</b><span id="lite-latency">0.31s</span></span><span><b>Output</b>Live response</span></footer>
+          </article>
+        </div>
+      </section>
+
+      <footer class="page-footer">Gemini Model Lab · HTML &amp; CSS only</footer>
+    </main>
+    <script src="frontend/app.js"></script>
+  </body>
+</html>

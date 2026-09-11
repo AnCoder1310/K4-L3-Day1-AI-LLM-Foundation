@@ -63,7 +63,7 @@ bản chạy được; vẫn sửa và nộp lại được trước hạn, mỗ
 
 Sau khi hoàn thành, bạn có thể:
 
-- Gọi Chat Completions API từ Python.
+- Gọi Gemini API từ Python.
 - Điều chỉnh cách model sinh nội dung bằng các tham số quan trọng.
 - So sánh model theo chất lượng phản hồi, độ trễ và chi phí.
 - Dùng system prompt để định hình vai trò và cách trả lời của model.
